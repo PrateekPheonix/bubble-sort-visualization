@@ -4,19 +4,16 @@ import './SortingVisualizer.css';
 
 const SortingVisualizer = () => {
 
-    const ANIMATION_SPEED_MS = 500;
-    const NUMBER_OF_ARRAY_BARS = 20;
-    const PRIMARY_COLOR = 'turquoise';
-    const SECONDARY_COLOR = 'red';
-
     const [array, setArray] = useState([]);
 
+
+
     const randomVal = (min, max) => {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+        return Math.floor((Math.random() * (max - min + 1) + min) * 2);
     }
     const resetArray = () => {
         const array = [];
-        for (let i = 0; i < NUMBER_OF_ARRAY_BARS; i++) {
+        for (let i = 0; i < 20; i++) {
             array.push(randomVal(0, 100));
         }
         setArray(array);
@@ -33,23 +30,27 @@ const SortingVisualizer = () => {
     const BubbleSort = () => {
         const animations = getbubbleSortAnime(array);
         for (let i = 0; i < animations.length; i++) {
+
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = animations[i][2];
+
             if (isColorChange) {
                 const [barOneIdx, barTwoIdx] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i % 2 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+                const color = i % 2 === 0 ? 'red' : 'lightseagreen';
+
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                }, i * ANIMATION_SPEED_MS);
+                }, i * 500);
+
             } else {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-                }, i * ANIMATION_SPEED_MS);
+                }, i * 500);
             }
         }
     }
@@ -63,7 +64,7 @@ const SortingVisualizer = () => {
                         className="array-bar"
                         key={idx}
                         style={{
-                            backgroundColor: PRIMARY_COLOR,
+                            backgroundColor: 'lightseagreen',
                             height: `${value}px`,
                         }}></div>
                 ))}

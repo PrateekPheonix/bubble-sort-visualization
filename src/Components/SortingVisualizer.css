@@ -12,9 +12,9 @@
 }
 
 .array-bar {
-    width: 20px;
+    width: 28px;
     display: inline-block;
-    margin: 0 2px;
+    margin: 0 2.5px;
 }
 
 .button-container{
@@ -65,4 +65,19 @@
 .button:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+@media screen and (max-width: 480px ) {
+    .array-bar {
+        margin: 0 1px;
+        width: 10px;
+    }
+
+    .button{
+        font-size: 12px;
+        padding: 0px 12px;
+    }
+    .button-container{
+        width: 90%;
+    }
 }
