@@ -25,6 +25,7 @@ const SortingVisualizer = () => {
 
     useEffect(() => {
         resetArray()
+        // eslint-disable-next-line
     }, []);
 
 
@@ -55,8 +56,8 @@ const SortingVisualizer = () => {
     console.log(array)
 
     return (
-        <div>
-            <div className="array-container">
+        <div className="array-container">
+            <div className='graph-container'>
                 {array.map((value, idx) => (
                     <div
                         className="array-bar"
@@ -66,8 +67,14 @@ const SortingVisualizer = () => {
                             height: `${value}px`,
                         }}></div>
                 ))}
-                <button onClick={() => resetArray()} id="button-container">Generate New Array</button>
-                <button onClick={() => BubbleSort()}>Bubble  sort the array</button>
+            </div>
+            <div className='button-container'>
+                <div onClick={() => resetArray()} id="button">
+                    <button class="button">Generate a new graph</button>
+                </div>
+                <div onClick={() => BubbleSort()} id="button">
+                    <button class="button">Bubble Sort</button>
+                </div>
             </div>
         </div>
     )
